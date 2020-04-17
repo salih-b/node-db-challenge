@@ -2,17 +2,24 @@ const db = require('../data/db-config.js');
 
 module.export = {
     find, 
-    findById
+    insert
 }
 
 
-function find(){
-    //resolves to array of businesses
-    return db('businesses')
+function find(finding){
+    //resolves to array 
+    return db(`${finding}`);
 }
 
 
-function findById(id){
-    // resolves to single business or null
-    return db('businesses').where({id}).first();
+function insert(table ,changes){
+    // resolves to single xxx
+    return db(`${table}`).insert(changes)
+    .then(ids => {
+      const id = ids[0];
+  
+      db(`${tables}`)
+        .where({ id })
+        .first();
+    });
 }

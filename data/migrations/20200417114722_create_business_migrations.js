@@ -18,7 +18,6 @@ exports.up = function (knex) {
           // foreign key to projects
           tbl
             .string("project_id", 255)
-            .notNullable()
             .references("id")
             .inTable("projects")
             .onDelete("RESTRICT") // 'CASCADE', 'RESTRICT', 'SET NULL', 'DO NOTHING'
