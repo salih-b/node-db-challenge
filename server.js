@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 
-const BusinessRouter = require('./businesses/businesses-router.js');
+const BusinessRouter = require('./projects/projects-router.js');
 
 const server = express();
 
