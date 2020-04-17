@@ -1,13 +1,13 @@
 const express = require('express');
 
-const Business = require('../data/db-helpers.js')
+const Proj = require('../data/db-helpers.js')
 const router = express.Router();
 
 // get requests
     // projects 
 router.get('/projects', (req, res) => {
     // get a list of all the projects from the database
-    Business.find('projects')
+    Proj.find('projects')
     .then(projects => {
       res.status(200).json(projects);
     })
@@ -19,7 +19,7 @@ router.get('/projects', (req, res) => {
       // resources
   router.get('/resources', (req, res) => {
     // get a list of all the resources from the database
-    Business.find('resources')
+    Proj.find('resources')
     .then(resources => {
       res.status(200).json(resources);
     })
@@ -31,7 +31,7 @@ router.get('/projects', (req, res) => {
       // tasks
   router.get('/tasks', (req, res) => {
     // get a list of all the resources from the database
-    Business.find('tasks')
+    Proj.find('tasks')
     .then(tasks => {
       res.status(200).json(tasks);
     })
@@ -44,7 +44,7 @@ router.get('/projects', (req, res) => {
   router.post('/projects', (req, res) => {
     // add project to the database
     const addition = req.body;
-    Business.insert('projects', addition)
+    Proj.insert('projects', addition)
     .then(p => { 
       if(p){
       res.status(200).json(p);
@@ -61,7 +61,7 @@ router.get('/projects', (req, res) => {
   router.post('/resources', (req, res) => {
     // add resources to the database
     const addition = req.body;
-    Business.insert('resources', addition)
+    Proj.insert('resources', addition)
     .then(r => { 
       if(r){
       res.status(200).json(r);
@@ -77,7 +77,7 @@ router.get('/projects', (req, res) => {
   router.post('/tasks', (req, res) => {
     // add task to the database
     const addition = req.body;
-    Business.insert('tasks', addition)
+    Proj.insert('tasks', addition)
     .then(t => { 
       if(t){
       res.status(200).json(t);
