@@ -31,7 +31,7 @@ router.get('/projects', (req, res) => {
       // tasks
   router.get('/tasks', (req, res) => {
     // get a list of all the resources from the database
-    Proj.find('tasks')
+    Proj.findTasks()
     .then(tasks => {
       res.status(200).json(tasks);
     })
@@ -39,8 +39,10 @@ router.get('/projects', (req, res) => {
       res.status(500).json(error);
     });
   });
- 
+
+ //-------------------------------------------------------------
   // Post requests
+
   router.post('/projects', (req, res) => {
     // add project to the database
     const addition = req.body;
@@ -79,8 +81,9 @@ router.get('/projects', (req, res) => {
     const addition = req.body;
     Proj.insert('tasks', addition)
     .then(t => { 
+      console.log(t);
       if(t){
-      res.status(200).json(t);
+      res.status(200).json({message: `sucessesful`});
       }else{
         res.status(400).json({message: 'invalid entry'})
       }
